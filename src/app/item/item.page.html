@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ item.name }}</ion-title>
+    <ion-title>{{ item.basic.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,8 +13,8 @@
     <!-- slider on top-->
     <ion-slides pager autoplay="2000" class="border-bottom">
 
-      <ion-slide *ngFor="let slide of item.images">
-        <img src="{{ slide }}" alt="">
+      <ion-slide *ngFor="let slide of item.basic.images">
+        <img src="{{ slide.thumb }}" alt="">
       </ion-slide>
 
     </ion-slides>
@@ -27,7 +27,7 @@
     </div>
 
     <div text-center padding margin-top class="border-bottom">
-      <p>{{ item.short_description }}</p>
+      <p>{{ item.detailed.description }}</p>
       <ion-text color="danger">
         <h1 class="price" margin-top *ngIf="item.sale_price">${{ item.sale_price }}</h1>
       </ion-text>

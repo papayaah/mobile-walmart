@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 export class CategoryService {
   private categories: any;
 
-  constructor(public httpClient: HttpClient) {
+  constructor(private http: HttpClient) {
     this.categories = CATEGORIES;
   }
 

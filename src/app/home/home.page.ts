@@ -31,7 +31,11 @@ export class HomePage {
   constructor(public nav: NavController, public categoryService: CategoryService, public itemService: ItemService) {
     this.categories = categoryService.getAll();
 
-    this.items = itemService.getAll();
+    //this.items = itemService.getAll();
+    itemService.getProducts()
+      .subscribe(data => {
+        this.items = data.products
+    })
   }
 
   // view categories

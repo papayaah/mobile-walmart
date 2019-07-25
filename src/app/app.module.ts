@@ -12,6 +12,8 @@ import { TabAttributePage } from './tab-attribute/tab-attribute.page';
 import { TabFilterPage } from './tab-filter/tab-filter.page';
 import { ModalFilterOptionPage } from './modal-filter-option/modal-filter-option.page';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,8 @@ import { ModalFilterOptionPage } from './modal-filter-option/modal-filter-option
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     StatusBar,

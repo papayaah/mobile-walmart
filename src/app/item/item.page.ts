@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
 import { ItemService } from '../services/item-service';
 import { ModalFilterOptionPage } from '../modal-filter-option/modal-filter-option.page';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-item',
@@ -12,9 +13,16 @@ export class ItemPage {
   // item info
   public item: any;
 
-  constructor(public nav: NavController, public itemService: ItemService, public modalCtrl: ModalController) {
+  constructor(public nav: NavController, public itemService: ItemService, public modalCtrl: ModalController, private activatedRoute: ActivatedRoute) {
+
+    const params: any = this.activatedRoute.snapshot.params;
+    const itemId = params.id
     // get the first item as sample data
-    this.item = itemService.getItem(1);
+    itemService.getItem(itemId)
+    .subscribe(data => {
+      this.item = data
+      console.log(this.item)
+    })
   }
 
   ngOnInit() {
