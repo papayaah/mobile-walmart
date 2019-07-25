@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Search Result(105)</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="tab-attribute">
+  <!--select attributes-->
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label>Categories</ion-label>
+      <ion-select>
+        <ion-select-option value="1">Dress</ion-select-option>
+        <ion-select-option value="2">Skirt</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Sleeve Length</ion-label>
+      <ion-select>
+        <ion-select-option value="">All</ion-select-option>
+        <ion-select-option value="1">Short</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fabric Type</ion-label>
+      <ion-select>
+        <ion-select-option value="">All</ion-select-option>
+        <ion-select-option value="1">Batik</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        CANCEL
+      </ion-button>
+      <ion-button (click)="closeModal()">
+        <ion-text color="medium"><span>APPLY</span></ion-text>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+

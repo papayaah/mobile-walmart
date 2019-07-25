@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="login">
+  <ion-list class="list-form">
+
+    <ion-item>
+      <ion-input type="text" placeholder="Email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="password" placeholder="Password"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-button color="primary" expand="block" (click)="login()">LOGIN</ion-button>
+
+  <div text-right margin-top margin-bottom (click)="forgotPwd()">Forgot password?</div>
+
+  <ion-button expand="block" class="facebook align-left">
+    <ion-icon name="logo-facebook"></ion-icon>
+    Signin with Facebook
+  </ion-button>
+
+  <ion-button expand="block" color="light" margin-top class="align-left">
+    <ion-icon name="logo-google"></ion-icon>
+    <span ion-text color="primary">Signin with Google</span>
+  </ion-button>
+
+  <div class="align-bottom" padding text-center>
+    No Account? <span class="bold" (click)="register()">Register</span>
+  </div>
+</ion-content>
+

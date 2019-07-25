@@ -1,0 +1,33 @@
+<ion-app>
+  <ion-menu side="start">
+
+    <ion-content>
+      <!-- User profile -->
+      <div text-center padding-top padding-bottom class="menu-left menu-bg">
+
+        <ion-menu-toggle>
+          <div [routerDirection]="'root'" routerLink="/my-account">
+            <img class="profile-picture" src="assets/img/user/adam.jpg">
+            <ion-text color="light">
+              <h4>Adam Lambert</h4>
+            </ion-text>
+          </div>
+        </ion-menu-toggle>
+      </div>
+
+      <ion-list>
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+          <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+            <ion-icon slot="start" [name]="p.icon"></ion-icon>
+            <ion-label>
+              {{p.title}}
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+
+  </ion-menu>
+
+  <ion-router-outlet main></ion-router-outlet>
+</ion-app>

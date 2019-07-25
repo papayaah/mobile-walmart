@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="register">
+  <ion-list class="list-form">
+
+    <ion-item>
+      <ion-input type="text" placeholder="Email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" placeholder="First Name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Last Name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="password" placeholder="Password"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-button color="primary" expand="block" (click)="register()">Create Account</ion-button>
+
+  <div class="align-bottom" padding text-center>
+    Have an account? <span class="bold" (click)="login()">Sign in</span>
+  </div>
+</ion-content>

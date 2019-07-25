@@ -1,0 +1,137 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Place Order</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="light-bg cart">
+  <div class="card">
+    <div class="card-header" padding>
+      Shipping address:
+    </div>
+    <div padding>
+      <ion-text color="secondary"><span>ENTER SHIPPING ADDRESS</span></ion-text>
+    </div>
+  </div>
+
+  <div class="card" margin-top *ngFor="let seller of cart.sellers; let sellerIndex = index"
+       [hidden]="!seller.items.length">
+    <div class="card-header" padding>
+      Seller: {{ seller.name }}
+    </div>
+
+    <ion-list lines="full" no-margin>
+      <ion-item class="product" *ngFor="let item of seller.items; let i = index">
+        <ion-thumbnail slot="start">
+          <img src="{{ item.thumb }}">
+        </ion-thumbnail>
+        <!--item's information-->
+        <ion-label>
+          <div text-wrap>{{ item.name }}</div>
+          <div class="text-sm">
+            <ion-text color="medium"><span>{{ item.options.join(',') }}</span></ion-text>
+          </div>
+          <div padding-bottom>
+            <span class="pull-right">${{ item.price }}</span>
+            <div class="clear"></div>
+          </div>
+          <div>
+            <div class="input-qty">
+            <span class="btn">
+              <ion-icon name="ios-remove"></ion-icon>
+            </span>
+              <input type="text" [(ngModel)]="item.quantity">
+              <span class="btn">
+              <ion-icon name="ios-add"></ion-icon>
+            </span>
+              <div class="clear"></div>
+            </div>
+            <div class="pull-right bottom-info text-lg trash-btn">
+              <ion-icon name="trash" color="medium" class="pull-right" (click)="remove(i, sellerIndex)"></ion-icon>
+              <div class="clear"></div>
+            </div>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+
+    <div class="card-footer" padding>
+      <div>
+        <ion-text color="medium"><span class="pull-left">Subtotal</span></ion-text>
+        <ion-text color="medium"><span class="pull-right">${{ seller.subtotal }}</span></ion-text>
+        <div class="clear"></div>
+      </div>
+      <div>
+        <ion-text color="medium"><span class="pull-left">Shipping</span></ion-text>
+        <ion-text color="medium"><span class="pull-right">${{ seller.shipping }}</span></ion-text>
+        <div class="clear"></div>
+      </div>
+      <div>
+        <ion-text color="medium"><span class="pull-left">Total</span></ion-text>
+        <ion-text color="danger"><span class="pull-right bold">${{ seller.total }}</span>
+        </ion-text>
+        <div class="clear"></div>
+      </div>
+    </div>
+
+    <ion-input placeholder="Massage to Supplier(Optional)"></ion-input>
+
+    <div class="card-footer" padding>
+      <div>
+        <ion-text color="gray"><span class="pull-left">Subtotal</span></ion-text>
+        <ion-text color="gray"><span class="pull-right">${{ seller.subtotal }}</span></ion-text>
+        <div class="clear"></div>
+      </div>
+      <div>
+        <ion-text color="gray"><span class="pull-left">Shipping</span></ion-text>
+        <ion-text color="gray"><span class="pull-right">${{ seller.shipping }}</span></ion-text>
+        <div class="clear"></div>
+      </div>
+      <div>
+        <ion-text color="gray"><span class="pull-left">Total</span></ion-text>
+        <ion-text color="danger"><span class="pull-right bold">${{ seller.total }}</span></ion-text>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+
+  <!--Total price-->
+  <div class="card" margin-top>
+    <div class="card-footer" padding>
+      <div>
+        <ion-text color="gray"><span class="pull-left">Subtotal</span></ion-text>
+        <ion-text color="gray"><span class="pull-right">${{ cart.subtotal }}</span></ion-text>
+        <div class="clear"></div>
+      </div>
+      <div>
+        <ion-text color="gray"><span class="pull-left">Shipping</span></ion-text>
+        <ion-text color="gray"><span class="pull-right">${{ cart.shipping }}</span></ion-text>
+        <div class="clear"></div>
+      </div>
+      <div>
+        <ion-text color="gray"><span class="pull-left">Coupon</span></ion-text>
+        <ion-text color="secondary"><span class="pull-right">PLEASE ENTER COUPON CODE</span></ion-text>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="cart-footer">
+  <ion-toolbar position="bottom">
+    <ion-title>
+      <ion-text color="medium"><span>Total</span></ion-text>
+      <br/>
+      <ion-text color="danger"><span class="bold">${{ cart.total }}</span></ion-text>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="buy()" color="danger">
+        PLACE ORDER
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

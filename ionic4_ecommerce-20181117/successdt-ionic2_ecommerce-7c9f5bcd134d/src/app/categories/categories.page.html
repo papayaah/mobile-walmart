@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-toggle>
+        <ion-button>
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
+    </ion-buttons>
+    <ion-title>Categories</ion-title>
+    <ion-buttons slot="mode-end">
+      <ion-button (click)="goToCart()">
+        <ion-icon name="cart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list lines="none">
+    <ion-item *ngFor="let category of categories" (click)="viewCategory(category.id)">
+      {{ category.name }} ({{ category.item_count }})
+    </ion-item>
+  </ion-list>
+</ion-content>

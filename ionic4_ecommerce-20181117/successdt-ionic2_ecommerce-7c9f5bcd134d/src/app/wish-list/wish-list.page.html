@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-toggle>
+        <ion-button>
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
+    </ion-buttons>
+    <ion-title>WishList</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--List of items-->
+  <ion-list no-margin class="list-products list" lines="full">
+    <ion-item class="product" *ngFor="let item of items; let i = index" (click)="viewItem(item.id)">
+      <ion-thumbnail slot="start">
+        <img src="{{ item.thumb }}">
+      </ion-thumbnail>
+      <!--item's information-->
+      <ion-label text-wrap>
+        <div>{{ item.name }}</div>
+        <div>
+          <ion-text color="danger"><span *ngIf="item.sale_price">${{ item.sale_price }}</span>
+          </ion-text>
+          <ion-text color="danger"><span *ngIf="!item.sale_price">${{ item.price }}</span>
+          </ion-text>
+        </div>
+        <div class="origin-price text-sm">
+          <span *ngIf="item.sale_price" class="text-decoration">${{ item.price }}</span>
+          <ion-text color="danger"><span *ngIf="item.sale_price" class="discount-rate">{{ discountPercent(item.price, item.sale_price) }}%</span>
+          </ion-text>
+        </div>
+        <div class="bottom-info text-lg" padding-right>
+          <ion-icon name="trash" color="medium" class="pull-right" (click)="remove(i)"></ion-icon>
+          <div class="clear"></div>
+        </div>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

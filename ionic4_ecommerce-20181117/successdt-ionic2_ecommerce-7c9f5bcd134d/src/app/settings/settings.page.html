@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-toggle>
+        <ion-button>
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full">
+    <ion-item class="item-divider">General</ion-item>
+
+    <ion-item>
+      <ion-label>Vibrate on touch</ion-label>
+      <ion-toggle checked="false" color="secondary"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Stay awake</ion-label>
+      <ion-toggle checked="false" color="secondary"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      Choose a custom ringtone
+      <ion-icon name="ios-arrow-forward" color="gray" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item class="item-divider">Storage</ion-item>
+
+    <ion-item>
+      Clean cash history data
+      <ion-icon name="ios-arrow-forward" color="gray" slot="end"></ion-icon>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

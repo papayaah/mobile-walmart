@@ -1,0 +1,45 @@
+ion-list.list-products {
+
+  .discount-rate {
+    font-size: 0.9em;
+    padding: 3px;
+    background: rgba(244, 67, 54, .15);
+  }
+
+  &.list {
+    ion-item {
+
+      ion-thumbnail {
+        margin: 16px 16px 16px 0;
+
+        img {
+          width: auto;
+          height: auto;
+        }
+      }
+
+      ion-label {
+        height: 100%;
+        padding: 16px 12px 16px 0;
+
+        .bottom-info {
+          position: absolute;
+          width: 100%;
+          bottom: 16px;
+          padding-right: 8px;
+        }
+      }
+    }
+  }
+}
+
+ion-toolbar {
+  ion-buttons.bar-buttons {
+    width: 50%;
+    text-align: center;
+
+    .bar-button {
+      font-size: 1.2rem;
+    }
+  }
+}

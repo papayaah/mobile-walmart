@@ -1,0 +1,31 @@
+ion-content {
+  --background: var(--ion-color-light);
+}
+
+.card {
+  font-size: 1em;
+  background: var(--ion-color-primary-contrast);
+}
+
+h1 {
+  margin-top: 0.8em;
+}
+
+.btn-wish-list {
+  position: absolute;
+  top: -20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  z-index: 1000;
+  right: 1rem;
+  padding: 12px;
+}
+
+.item-stats {
+  border-top: 1px solid var(--ion-color-light);
+
+  ion-col + ion-col {
+    border-left: 1px solid var(--ion-color-light);
+  }
+}

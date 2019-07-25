@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Search Result(105)</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <!--filter list-->
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label>Ship to</ion-label>
+      <ion-select>
+        <ion-select-option value="">All Regions</ion-select-option>
+        <ion-select-option value="vn">Vietnam</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="price-ranger">
+      <ion-label>Price</ion-label>
+      <ion-input type="text" placeholder="Min"></ion-input>
+      -
+      <ion-input type="text" placeholder="Max"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Free shipping</ion-label>
+      <ion-toggle checked="false"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Once pice only</ion-label>
+      <ion-toggle checked="false"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Sale items</ion-label>
+      <ion-toggle checked="false"></ion-toggle>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+<!--Footer buttons-->
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        CANCEL
+      </ion-button>
+      <ion-button (click)="closeModal()">
+        <ion-text color="medium"><span>APPLY</span></ion-text>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

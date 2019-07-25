@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-toggle>
+        <ion-button>
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
+    </ion-buttons>
+    <ion-title>Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--Choose shipping location-->
+  <div class="card">
+    <ion-item lines="none">
+      <ion-label>Ship to</ion-label>
+      <ion-select>
+        <ion-select-option value="">Singapore</ion-select-option>
+        <ion-select-option value="vn">Vietnam</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+
+  <div class="card" margin-top *ngFor="let seller of cart.sellers; let sellerIndex = index"
+       [hidden]="!seller.items.length">
+    <div class="card-header" padding>
+      Seller: {{ seller.name }}
+    </div>
+
+    <ion-list lines="full" no-margin>
+      <ion-item class="product" *ngFor="let item of seller.items; let i = index">
+        <ion-thumbnail slot="start">
+          <img src="{{ item.thumb }}">
+        </ion-thumbnail>
+        <!--item's information-->
+        <ion-label>
+          <div text-wrap>{{ item.name }}</div>
+          <div class="text-sm">
+            <ion-text color="medium"><span>{{ item.options.join(',') }}</span></ion-text>
+          </div>
+          <div padding-bottom>
+            <span class="pull-right">{{ item.price | currency:'USD':true }}</span>
+            <div class="clear"></div>
+          </div>
+          <div>
+            <div class="input-qty">
+            <span class="btn">
+              <ion-icon name="ios-remove"></ion-icon>
+            </span>
+              <input type="text" [(ngModel)]="item.quantity">
+              <span class="btn">
+              <ion-icon name="ios-add"></ion-icon>
+            </span>
+              <div class="clear"></div>
+            </div>
+            <div class="pull-right bottom-info text-lg trash-btn">
+              <ion-icon name="trash" color="medium" class="pull-right" (click)="remove(i, sellerIndex)"></ion-icon>
+              <div class="clear"></div>
+            </div>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+
+    <div class="card-footer" padding>
+      <div>
+        <ion-text color="medium"><span class="pull-left">Subtotal</span></ion-text>
+        <ion-text color="medium"><span class="pull-right">{{ seller.subtotal | currency:'USD':true }}</span></ion-text>
+        <div class="clear"></div>
+      </div>
+      <div>
+        <ion-text color="medium"><span class="pull-left">Shipping</span></ion-text>
+        <ion-text color="medium"><span class="pull-right">{{ seller.shipping | currency:'USD':true }}</span></ion-text>
+        <div class="clear"></div>
+      </div>
+      <div>
+        <ion-text color="medium"><span class="pull-left">Total</span></ion-text>
+        <ion-text color="danger"><span class="pull-right bold">{{ seller.total | currency:'USD':true }}</span>
+        </ion-text>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+
+  <!--Total price-->
+  <div class="card" margin-top>
+    <div class="card-footer" padding>
+      <div>
+        <ion-text color="medium"><span class="pull-left">Subtotal</span></ion-text>
+        <ion-text color="medium"><span class="pull-right">{{ cart.subtotal | currency:'USD':true }}</span></ion-text>
+        <div class="clear"></div>
+      </div>
+      <div>
+        <ion-text color="medium"><span class="pull-left">Shipping</span></ion-text>
+        <ion-text color="medium"><span class="pull-right">{{ cart.shipping | currency:'USD':true }}</span></ion-text>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="cart-footer">
+  <ion-toolbar position="bottom">
+    <ion-title>
+      <ion-text color="medium"><span>Total</span></ion-text>
+      <br/>
+      <ion-text color="danger"><span class="bold">${{ cart.total }}</span></ion-text>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="buy()" color="danger">
+        BUY ALL
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

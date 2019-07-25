@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-toggle>
+        <ion-button>
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
+    </ion-buttons>
+    <ion-title>MyOrder</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="my-order light-bg">
+  <div class="card light-bg" margin-top *ngFor="let order of orders; let orderIndex = index">
+    <div class="card-header" padding>
+      <div>Order Id: {{ order.transaction_id }}</div>
+      <div>Order Time: {{ order.created_at }}</div>
+    </div>
+
+    <ion-list class="list-full-border" no-margin>
+      <ion-item class="product" *ngFor="let item of order.items; let i = index">
+        <ion-thumbnail slot="start">
+          <img src="{{ item.thumb }}">
+        </ion-thumbnail>
+        <!--item's information-->
+        <ion-label>
+          <div text-wrap>{{ item.name }}</div>
+          <div padding-bottom>
+            <span class="pull-right">${{ item.price }} x {{ item.quantity }}</span>
+            <div class="clear"></div>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <div class="card-footer" padding>
+      <div>
+        <ion-text color="gray"><span class="pull-left">Total</span></ion-text>
+        <ion-text color="danger"><span class="pull-right bold">${{ order.total }}</span></ion-text>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</ion-content>
