@@ -4,6 +4,7 @@ import { ItemService } from '../services/item-service';
 import { CategoryService } from '../services/category-service';
 import { TabFilterPage } from '../tab-filter/tab-filter.page';
 import { TabAttributePage } from '../tab-attribute/tab-attribute.page';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-category',
@@ -13,7 +14,7 @@ import { TabAttributePage } from '../tab-attribute/tab-attribute.page';
 export class CategoryPage {
 
   // list items of this category
-  public items: any;
+  public items: any = []
 
   // category info
   public category: any;
@@ -25,12 +26,28 @@ export class CategoryPage {
   public sortBy = 'Best Match';
 
   constructor(public nav: NavController, public itemService: ItemService, public categoryService: CategoryService,
-              public modalCtrl: ModalController, public actionSheetCtrl: ActionSheetController) {
+              public modalCtrl: ModalController, public actionSheetCtrl: ActionSheetController, private activatedRoute: ActivatedRoute) {
+
+    const params: any = this.activatedRoute.snapshot.params;
+    const categoryId = params.id
     // get list items of a category as sample
-    this.items = itemService.getByCategory(1);
+    itemService.getByCategory(categoryId)
+      .subscribe(data => {
+        data.products.forEach(product => {
+          this.items.push({
+            thumb: product.basic.image.thumbnail,
+            name: product.basic.name,
+            price: product.store.price.displayPrice
+          })
+        })
+
+        this.category = {
+          name: data.browseTitles[0].name
+        }
+      })
 
     // set category info
-    this.category = categoryService.getItem(1);
+    // this.category = categoryService.getItem(1)
   }
 
   // switch to list view

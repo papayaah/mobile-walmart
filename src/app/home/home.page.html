@@ -38,20 +38,20 @@
   <ion-card>
     <ion-list class="cat-list">
       <ion-row>
-        <ion-col *ngFor="let cat of categories | slice:0:3; let i = index" (click)="viewCategory(cat.id)">
+        <ion-col *ngFor="let cat of categories; let i = index" (click)="viewCategory(cat.id)">
           <img src="{{ cat.thumb }}" alt="">
           <div text-center>{{ cat.name }}</div>
         </ion-col>
-        <ion-col text-center (click)="viewCategories()">
+        <!-- <ion-col text-center (click)="viewCategories()">
           <img src="assets/img/categories/all.png" alt="">
           <div text-center>All categories</div>
-        </ion-col>
+        </ion-col> -->
       </ion-row>
     </ion-list>
   </ion-card>
 
   <!--Deals-->
-  <ion-grid class="grid-no-padding deals">
+  <!-- <ion-grid class="grid-no-padding deals">
     <ion-row>
       <ion-col text-center>
         <ion-card>
@@ -68,7 +68,7 @@
         </ion-card>
       </ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-grid> -->
 
   <h4 text-center>JUST FOR YOU</h4>
 

@@ -34,15 +34,21 @@ export class ItemService {
   }
 
   getByCategory(catId) {
-    let items = [];
+    const url = `http://localhost:3000/v4/api/products/browse?taxonomyNodeId=${catId}&storeId=2086&count=60&page=1&offset=0`
 
-    for (let i = 0; i < ITEMS.length; i++) {
-      if (ITEMS[i].category_id == catId) {
-        items.push(ITEMS[i]);
-      }
-    }
+    return this.http.get(url)
+    .pipe(
+      catchError(this.handleError)
+    )
+    // let items = [];
 
-    return items;
+    // for (let i = 0; i < ITEMS.length; i++) {
+    //   if (ITEMS[i].category_id == catId) {
+    //     items.push(ITEMS[i]);
+    //   }
+    // }
+
+    // return items;
   }
 
   getItem(id) {

@@ -7,7 +7,7 @@
         </ion-button>
       </ion-menu-toggle>
     </ion-buttons>
-    <ion-title>{{ category.name }}</ion-title>
+    <ion-title *ngIf="category">{{ category.name }}</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="goToCart()">
         <ion-icon name="cart"></ion-icon>
@@ -39,15 +39,14 @@
         <div>
           <ion-text color="danger"><span *ngIf="item.sale_price">{{ item.sale_price | currency:'USD':true }}</span>
           </ion-text>
-          <ion-text color="danger"><span *ngIf="!item.sale_price">{{ item.price | currency:'USD':true }}</span>
-          </ion-text>
+          <ion-text color="danger">{{ item.price | currency:'USD':true }}</ion-text>
         </div>
         <div class="origin-price text-sm">
           <span *ngIf="item.sale_price" class="text-decoration">{{ item.price | currency:'USD':true }}</span>
           <ion-text color="danger"><span *ngIf="item.sale_price" class="discount-rate">{{ discountPercent(item.price, item.sale_price) }}%</span>
           </ion-text>
         </div>
-        <div class="bottom-info text-sm">
+        <!-- <div class="bottom-info text-sm">
           <ion-text color="medium"><span class="pull-left" *ngIf="item.shipping == 0">Free shipping</span></ion-text>
           <ion-text color="medium"><span class="pull-left" *ngIf="item.shipping != 0">Shipping: {{ item.shipping | currency:'USD':true}}</span>
           </ion-text>
@@ -55,7 +54,7 @@
             <span>{{ item.num_orders }} Orders</span>
           </ion-text>
           <div class="clear"></div>
-        </div>
+        </div> -->
       </ion-label>
     </ion-item>
   </ion-list>

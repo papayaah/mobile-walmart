@@ -23,19 +23,31 @@ export class HomePage {
   ];
 
   // list categories
-  public categories: any;
+  public categories: any = [];
 
   // list of items
   public items: any;
 
   constructor(public nav: NavController, public categoryService: CategoryService, public itemService: ItemService) {
-    this.categories = categoryService.getAll();
-
-    //this.items = itemService.getAll();
     itemService.getProducts()
       .subscribe(data => {
         this.items = data.products
-    })
+      })
+
+    categoryService.getAll()
+      .subscribe(data => {
+        // pull the categories out
+        const modules = data.modules//.map(m => {return m.configs})
+        modules.forEach(m => {
+          if(!m.configs.products) return
+
+          this.categories.push({
+            id: m.matchedTrigger.pageId,
+            name: m.configs.title,
+            thumb: m.configs.products[0].basic.image.thumbnail
+          })
+        })
+      })
   }
 
   // view categories

@@ -32,7 +32,7 @@
         <h1 class="price" margin-top *ngIf="item.sale_price">${{ item.sale_price }}</h1>
       </ion-text>
       <ion-text color="danger">
-        <h1 class="price" margin-top *ngIf="!item.sale_price">${{ item.price }}</h1>
+        <h1 class="price" margin-top *ngIf="!item.sale_price">${{ item.store.price.displayPrice }}</h1>
       </ion-text>
       <ion-text color="medium">
         <h2 class="origin-price text-decoration" margin-top *ngIf="item.sale_price">${{ item.price }}</h2>
