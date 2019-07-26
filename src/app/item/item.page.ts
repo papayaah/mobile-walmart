@@ -3,6 +3,7 @@ import { ModalController, NavController } from '@ionic/angular';
 import { ItemService } from '../services/item-service';
 import { ModalFilterOptionPage } from '../modal-filter-option/modal-filter-option.page';
 import { ActivatedRoute } from "@angular/router";
+import { SafeHtml } from "../safe-html.pipe";
 
 @Component({
   selector: 'app-item',
@@ -11,7 +12,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class ItemPage {
   // item info
-  public item: any;
+  public item: any
 
   constructor(public nav: NavController, public itemService: ItemService, public modalCtrl: ModalController, private activatedRoute: ActivatedRoute) {
 
@@ -25,8 +26,7 @@ export class ItemPage {
     })
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   // add or remove item on wish list
   toggleWishList(item) {

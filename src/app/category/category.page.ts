@@ -35,6 +35,7 @@ export class CategoryPage {
       .subscribe( ( data:any ) => {
         data.products.forEach(product => {
           this.items.push({
+            id: product.USItemId,
             thumb: product.basic.image.thumbnail,
             name: product.basic.name,
             price: product.store.price.displayPrice

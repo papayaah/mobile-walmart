@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header *ngIf="item">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="item">
 
   <div class="card">
     <!-- slider on top-->
@@ -27,131 +27,16 @@
     </div>
 
     <div text-center padding margin-top class="border-bottom">
-      <p>{{ item.detailed.description }}</p>
+      <p>{{ item.basic.name }}</p>
       <ion-text color="danger">
-        <h1 class="price" margin-top *ngIf="item.sale_price">${{ item.sale_price }}</h1>
-      </ion-text>
-      <ion-text color="danger">
-        <h1 class="price" margin-top *ngIf="!item.sale_price">${{ item.store.price.displayPrice }}</h1>
-      </ion-text>
-      <ion-text color="medium">
-        <h2 class="origin-price text-decoration" margin-top *ngIf="item.sale_price">${{ item.price }}</h2>
+        <h1 class="price" margin-top>${{ item.store.price.displayPrice }}</h1>
       </ion-text>
     </div>
-
-    <ion-grid>
-      <ion-row class="item-stats">
-        <ion-col text-center>
-          <div class="text-lg">{{ item.rating }}</div>
-          <ion-text color="medium"><span class="text-sm">FeedBacks</span></ion-text>
-        </ion-col>
-        <ion-col text-center>
-          <div class="text-lg">{{ item.num_orders}}</div>
-          <ion-text color="medium"><span class="text-sm">Orders</span></ion-text>
-        </ion-col>
-        <ion-col text-center>
-          <div class="text-lg">{{ item.num_wish_list}}</div>
-          <ion-text color="medium"><span class="text-sm">Wish List</span></ion-text>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-
-  <!--item options-->
-  <div class="card light-bg" margin-top>
-    <ion-item>
-      <ion-label>
-        <div>{{ getOptionGroupsName(item) }}</div>
-        <div>
-          <ion-text color="medium"><span class="pull-left" *ngIf="item.shipping == 0">Free shipping</span></ion-text>
-          <ion-text color="medium"><span class="pull-left" *ngIf="item.shipping != 0">Shipping: {{ item.shipping | currency:'USD':true}}</span>
-          </ion-text>
-        </div>
-        <div class="pull-right">
-          <ion-text color="secondary"><span class="bold" (click)="showOptions(item)">SELECT</span></ion-text>
-        </div>
-      </ion-label>
-    </ion-item>
-
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-button color="primary" expand="block" class="btn-add-cart" (click)="showOptions(item)">ADD TO CART
-          </ion-button>
-        </ion-col>
-        <ion-col>
-          <ion-button color="primary" expand="block" (click)="showOptions(item)">BUY NOW</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
   </div>
 
   <!--Description-->
   <div class="card" margin-top>
-    <div class="border-bottom" padding>Item Description</div>
-    <div padding>{{ item.description }}</div>
-  </div>
-
-  <!--Feed backs-->
-  <div class="card" margin-top>
-    <div padding>
-      Feedback({{ item.reviews.length }})
-    </div>
-
-    <ion-list>
-      <ion-item *ngFor="let review of item.reviews">
-        <ion-avatar slot="start">
-          <img src="{{ review.avatar }}">
-        </ion-avatar>
-
-        <ion-label text-wrap>
-          <div>
-            <span class="pull-left">{{ review.name }}</span>
-            <span class="pull-right text-sm">
-              <ion-icon name="md-star" color="warning" *ngFor="let start of range(review.stars)"></ion-icon>
-              <ion-icon name="md-star" color="medium" *ngFor="let start of range(5 - review.stars)"></ion-icon>
-            </span>
-
-            <div class="clear"></div>
-          </div>
-
-          <div>
-            <ion-text color="medium"><span class="text-sm">{{ review.time }}</span></ion-text>
-          </div>
-
-          <p class="text-sm">
-            {{ review.content }}
-          </p>
-        </ion-label>
-
-      </ion-item>
-    </ion-list>
-  </div>
-
-  <!--Seller info-->
-  <div class="card" margin-top>
-    <div padding class="border-bottom">
-      Seller info
-    </div>
-    <div padding>
-      {{ item.seller.name }}
-    </div>
-
-    <ion-grid>
-      <ion-row class="item-stats">
-        <ion-col text-center>
-          <div class="text-lg">{{ item.seller.rating }}</div>
-          <ion-text color="medium"><span class="text-sm">FeedBacks</span></ion-text>
-        </ion-col>
-        <ion-col text-center>
-          <div class="text-lg">{{ item.seller.num_orders}}</div>
-          <ion-text color="medium"><span class="text-sm">Orders</span></ion-text>
-        </ion-col>
-        <ion-col text-center>
-          <div class="text-lg">{{ item.seller.num_wish_list}}</div>
-          <ion-text color="medium"><span class="text-sm">Wish List</span></ion-text>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <div class="border-bottom" padding>Description</div>
+    <div padding [innerHTML]="item.detailed.description"></div>
   </div>
 </ion-content>

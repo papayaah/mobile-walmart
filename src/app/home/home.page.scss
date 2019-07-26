@@ -13,7 +13,6 @@ ion-card {
 }
 
 .deals {
-
   ion-col {
     padding: 6px;
     padding-top: 0;
@@ -38,4 +37,17 @@ ion-card {
       }
     }
   }
+}
+
+.card {
+  padding: 0.5rem;
+}
+
+.name {
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.price {
+  font-size: 0.8rem;
 }

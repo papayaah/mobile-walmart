@@ -13,8 +13,6 @@ import { TabFilterPage } from './tab-filter/tab-filter.page';
 import { ModalFilterOptionPage } from './modal-filter-option/modal-filter-option.page';
 
 import { HttpClientModule } from '@angular/common/http';
-
-import { SafeHtml } from "./safe-html.pipe";
 import { Globals } from './globals';
 
 @NgModule({
@@ -22,8 +20,7 @@ import { Globals } from './globals';
     AppComponent,
     TabAttributePage,
     TabFilterPage,
-    ModalFilterOptionPage,
-    SafeHtml
+    ModalFilterOptionPage
   ],
   entryComponents: [
     TabAttributePage,
