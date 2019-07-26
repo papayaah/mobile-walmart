@@ -6,8 +6,8 @@
       <div text-center padding-top padding-bottom class="menu-left menu-bg">
 
         <ion-menu-toggle>
-          <div [routerDirection]="'root'" routerLink="/my-account">
-            <img class="profile-picture" src="assets/img/user/adam.jpg">
+          <div [routerDirection]="'root'">
+            <img class="profile-picture" src="assets/img/user/ben.png">
             <ion-text color="light">
               <h4>Adam Lambert</h4>
             </ion-text>
@@ -17,7 +17,7 @@
 
       <ion-list>
         <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-          <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+          <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" [disabled]="p.title != 'Home'">
             <ion-icon slot="start" [name]="p.icon"></ion-icon>
             <ion-label>
               {{p.title}}
