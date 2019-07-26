@@ -30,12 +30,12 @@ export class HomePage {
 
   constructor(public nav: NavController, public categoryService: CategoryService, public itemService: ItemService) {
     itemService.getProducts()
-      .subscribe(data => {
+      .subscribe( (data: any) => {
         this.items = data.products
       })
 
     categoryService.getAll()
-      .subscribe(data => {
+      .subscribe( (data: any) => {
         // pull the categories out
         const modules = data.modules//.map(m => {return m.configs})
         modules.forEach(m => {

@@ -32,7 +32,7 @@ export class CategoryPage {
     const categoryId = params.id
     // get list items of a category as sample
     itemService.getByCategory(categoryId)
-      .subscribe(data => {
+      .subscribe( ( data:any ) => {
         data.products.forEach(product => {
           this.items.push({
             thumb: product.basic.image.thumbnail,
