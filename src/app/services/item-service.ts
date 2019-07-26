@@ -7,17 +7,18 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
+import { Globals } from '../globals'
 
 @Injectable({providedIn: 'root'})
 export class ItemService {
   private items: any;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private globals: Globals) {
     this.items = ITEMS;
   }
 
   getProducts() {
-    const url = 'http://localhost:3000/v3/api/products?strategy=search&storeId=3267&query=bread&count=10&page=1&offset=0'
+    const url = `${this.globals.BASE_URL}/v3/api/products?strategy=search&storeId=3267&query=bread&count=10&page=1&offset=0`
     return this.http.get(url)
       .pipe(
         catchError(this.handleError)
@@ -34,7 +35,7 @@ export class ItemService {
   }
 
   getByCategory(catId) {
-    const url = `http://localhost:3000/v4/api/products/browse?taxonomyNodeId=${catId}&storeId=2086&count=60&page=1&offset=0`
+    const url = `${this.globals.BASE_URL}/v4/api/products/browse?taxonomyNodeId=${catId}&storeId=2086&count=60&page=1&offset=0`
 
     return this.http.get(url)
     .pipe(
@@ -52,7 +53,7 @@ export class ItemService {
   }
 
   getItem(id) {
-    const url = `http://localhost:3000/v3/api/products/${id}?itemFields=all&storeId=2086&selected=true`
+    const url = `${this.globals.BASE_URL}/v3/api/products/${id}?itemFields=all&storeId=2086&selected=true`
     return this.http.get(url)
     .pipe(
       catchError(this.handleError)

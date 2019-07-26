@@ -14,12 +14,16 @@ import { ModalFilterOptionPage } from './modal-filter-option/modal-filter-option
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { SafeHtml } from "./safe-html.pipe";
+import { Globals } from './globals';
+
 @NgModule({
   declarations: [
     AppComponent,
     TabAttributePage,
     TabFilterPage,
-    ModalFilterOptionPage
+    ModalFilterOptionPage,
+    SafeHtml
   ],
   entryComponents: [
     TabAttributePage,
@@ -35,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
+    {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
+    Globals
   ],
   bootstrap: [AppComponent]
 })

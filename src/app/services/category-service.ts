@@ -6,17 +6,18 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
+import { Globals } from '../globals'
 
 @Injectable({providedIn: 'root'})
 export class CategoryService {
   private categories: any;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private globals: Globals) {
     this.categories = CATEGORIES;
   }
 
   getAll() {
-    const url = `http://localhost:3000/v3/api/pages/categoryPage?tenant=WM_TO_GO&channel=WWW&pageType=categoryPage&enrich=iro,athenaunified&storeId=2086&pageId=1255027787101&itemLimit=25`
+    const url = `${this.globals.BASE_URL}/v3/api/pages/categoryPage?tenant=WM_TO_GO&channel=WWW&pageType=categoryPage&enrich=iro,athenaunified&storeId=2086&pageId=1255027787101&itemLimit=25`
 
     return this.http.get(url)
     .pipe(
