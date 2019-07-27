@@ -31,7 +31,7 @@
   <ion-list no-margin class="list-full-border list-products" lines="full">
     <ion-item class="product" *ngFor="let item of items" (click)="viewItem(item.id)">
       <ion-thumbnail slot="start">
-        <img src="{{ item.thumb }}">
+        <img src="{{ item.thumb.replace('http', 'https') }}">
       </ion-thumbnail>
       <!--item's information-->
       <ion-label>
@@ -46,15 +46,6 @@
           <ion-text color="danger"><span *ngIf="item.sale_price" class="discount-rate">{{ discountPercent(item.price, item.sale_price) }}%</span>
           </ion-text>
         </div>
-        <!-- <div class="bottom-info text-sm">
-          <ion-text color="medium"><span class="pull-left" *ngIf="item.shipping == 0">Free shipping</span></ion-text>
-          <ion-text color="medium"><span class="pull-left" *ngIf="item.shipping != 0">Shipping: {{ item.shipping | currency:'USD':true}}</span>
-          </ion-text>
-          <ion-text class="pull-right" color="medium">
-            <span>{{ item.num_orders }} Orders</span>
-          </ion-text>
-          <div class="clear"></div>
-        </div> -->
       </ion-label>
     </ion-item>
   </ion-list>
