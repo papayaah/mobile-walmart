@@ -1,0 +1,7 @@
+{
+  "appId": "mobile.walmart",
+  "appName": "ionic2_ecommerce",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

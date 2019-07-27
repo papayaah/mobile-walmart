@@ -37,7 +37,7 @@ export class HomePage {
     categoryService.getAll()
       .subscribe( (data: any) => {
         // pull the categories out
-        const modules = data.modules//.map(m => {return m.configs})
+        const modules = data.modules
         modules.forEach(m => {
           if(!m.configs.products) return
 

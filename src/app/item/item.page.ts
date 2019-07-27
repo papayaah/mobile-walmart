@@ -3,7 +3,6 @@ import { ModalController, NavController } from '@ionic/angular';
 import { ItemService } from '../services/item-service';
 import { ModalFilterOptionPage } from '../modal-filter-option/modal-filter-option.page';
 import { ActivatedRoute } from "@angular/router";
-import { SafeHtml } from "../safe-html.pipe";
 
 @Component({
   selector: 'app-item',

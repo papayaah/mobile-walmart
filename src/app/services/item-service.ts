@@ -18,7 +18,7 @@ export class ItemService {
   }
 
   getProducts() {
-    const url = `${this.globals.BASE_URL}/v3/api/products?strategy=search&storeId=3267&query=bread&count=10&page=1&offset=0`
+    const url = `${this.globals.BASE_URL}/v3/api/products?strategy=search&storeId=3267&query=best sellers&count=10&page=1&offset=0`
     return this.http.get(url)
       .pipe(
         catchError(this.handleError)
@@ -26,11 +26,6 @@ export class ItemService {
   }
 
   getAll() {
-    this.http.get('http://localhost:3000/v3/api/products?strategy=search&storeId=3267&query=bread&count=10&page=1&offset=0')
-    .subscribe((response) => {
-      console.log(response)
-    })
-
     return this.items;
   }
 
@@ -58,12 +53,6 @@ export class ItemService {
     .pipe(
       catchError(this.handleError)
     )
-    // for (let i = 0; i < this.items.length; i++) {
-    //   if (this.items[i].id === parseInt(id)) {
-    //     return this.items[i];
-    //   }
-    // }
-    // return null;
   }
 
   remove(item) {

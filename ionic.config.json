@@ -1,7 +1,8 @@
 {
-  "name": "ionic2_ecommerce",
+  "name": "mobile-walmart",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }
